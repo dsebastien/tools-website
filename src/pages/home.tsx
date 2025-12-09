@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope, FaGlobe } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import Section from '@/components/ui/section'
 import ToolCard from '@/components/tools/tool-card'
@@ -259,7 +259,11 @@ const HomePage: React.FC = () => {
                             rel='noopener noreferrer'
                             className='bg-secondary hover:bg-secondary/90 flex items-center gap-2 rounded-lg px-4 py-2 text-white transition-colors'
                         >
-                            <FaGlobe className='h-5 w-5' />
+                            <img
+                                src='https://www.dsebastien.net/assets/images/developassion-logo.png?v=227ae60558'
+                                alt='DeveloPassion'
+                                className='h-5 w-5 rounded-full object-contain'
+                            />
                             Website
                         </a>
                         <a

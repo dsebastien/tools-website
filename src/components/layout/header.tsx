@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { FaGithub, FaTools } from 'react-icons/fa'
+import { FaTools } from 'react-icons/fa'
 
 const Header: React.FC = () => {
     return (
@@ -24,15 +24,19 @@ const Header: React.FC = () => {
                         </Link>
                     </div>
 
-                    {/* GitHub Link */}
+                    {/* Website Link */}
                     <a
-                        href='https://github.com/dsebastien'
+                        href='https://www.dsebastien.net'
                         target='_blank'
                         rel='noopener noreferrer'
                         className='bg-primary/10 hover:bg-primary/20 flex items-center gap-2 rounded-lg px-4 py-2 transition-colors'
                     >
-                        <FaGithub className='h-5 w-5' />
-                        <span className='hidden sm:inline'>GitHub</span>
+                        <img
+                            src='https://www.dsebastien.net/assets/images/developassion-logo.png?v=227ae60558'
+                            alt='DeveloPassion'
+                            className='h-5 w-5 rounded-full object-contain'
+                        />
+                        <span className='hidden sm:inline'>Website</span>
                     </a>
                 </div>
             </nav>
