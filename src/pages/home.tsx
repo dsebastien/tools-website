@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { FaGithub, FaLinkedin, FaEnvelope, FaRocket } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope, FaGlobe } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import Section from '@/components/ui/section'
 import ToolCard from '@/components/tools/tool-card'
@@ -251,7 +251,38 @@ const HomePage: React.FC = () => {
                         productivity. Most of my tools are open source and free to use. Some are
                         paid products that help support my work.
                     </p>
-                    <div className='flex flex-wrap justify-center gap-4'>
+                    {/* Primary links */}
+                    <div className='mb-4 flex flex-wrap justify-center gap-3'>
+                        <a
+                            href='https://www.dsebastien.net'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='bg-secondary hover:bg-secondary/90 flex items-center gap-2 rounded-lg px-4 py-2 text-white transition-colors'
+                        >
+                            <FaGlobe className='h-5 w-5' />
+                            Website
+                        </a>
+                        <a
+                            href='https://www.youtube.com/@dsebastien'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='flex items-center gap-2 rounded-lg bg-red-500/20 px-4 py-2 text-red-400 transition-colors hover:bg-red-500/30'
+                        >
+                            <FaYoutube className='h-5 w-5' />
+                            YouTube
+                        </a>
+                        <a
+                            href='https://www.dsebastien.net/newsletter/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='flex items-center gap-2 rounded-lg bg-amber-500/20 px-4 py-2 text-amber-400 transition-colors hover:bg-amber-500/30'
+                        >
+                            <FaEnvelope className='h-5 w-5' />
+                            Newsletter
+                        </a>
+                    </div>
+                    {/* Social links */}
+                    <div className='flex flex-wrap justify-center gap-3'>
                         <a
                             href='https://github.com/dsebastien'
                             target='_blank'
