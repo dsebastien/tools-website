@@ -71,12 +71,12 @@ const ToolsFilter: React.FC<ToolsFilterProps> = ({
         onShowFreeOnlyChange(false)
     }
 
-    const hasActiveFilters =
-        searchQuery ||
-        selectedCategory !== 'All' ||
-        selectedLabels.length > 0 ||
-        selectedStatuses.length > 0 ||
-        showFreeOnly
+    // Filters that are part of "More filters" section
+    const hasMoreFiltersActive =
+        selectedLabels.length > 0 || selectedStatuses.length > 0 || showFreeOnly
+
+    // All active filters (for clear all button)
+    const hasActiveFilters = searchQuery || selectedCategory !== 'All' || hasMoreFiltersActive
 
     return (
         <div className='space-y-4'>
@@ -167,7 +167,7 @@ const ToolsFilter: React.FC<ToolsFilterProps> = ({
                 <summary className='text-primary/70 hover:text-primary flex cursor-pointer items-center gap-2 px-4 py-3 transition-colors'>
                     <FaFilter className='h-4 w-4' />
                     <span>More Filters</span>
-                    {hasActiveFilters && (
+                    {hasMoreFiltersActive && (
                         <span className='bg-secondary ml-2 rounded-full px-2 py-0.5 text-xs text-white'>
                             Active
                         </span>

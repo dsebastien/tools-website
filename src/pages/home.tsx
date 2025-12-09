@@ -262,7 +262,7 @@ const HomePage: React.FC = () => {
                             GitHub
                         </a>
                         <a
-                            href='https://x.com/daborski'
+                            href='https://x.com/dsebastien'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='bg-primary/10 hover:bg-primary/20 flex items-center gap-2 rounded-lg px-4 py-2 transition-colors'
@@ -270,20 +270,13 @@ const HomePage: React.FC = () => {
                             <FaXTwitter className='h-5 w-5' />X
                         </a>
                         <a
-                            href='https://www.linkedin.com/in/yourprofile'
+                            href='https://www.linkedin.com/in/sebastiend'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='bg-primary/10 hover:bg-primary/20 flex items-center gap-2 rounded-lg px-4 py-2 transition-colors'
                         >
                             <FaLinkedin className='h-5 w-5' />
                             LinkedIn
-                        </a>
-                        <a
-                            href='mailto:sebastien@dsebastien.net'
-                            className='bg-primary/10 hover:bg-primary/20 flex items-center gap-2 rounded-lg px-4 py-2 transition-colors'
-                        >
-                            <FaEnvelope className='h-5 w-5' />
-                            Email
                         </a>
                     </div>
                 </div>

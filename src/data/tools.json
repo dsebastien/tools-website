@@ -19,7 +19,15 @@
             "id": "knowii-voice-ai",
             "name": "Knowii Voice AI",
             "description": "Voice-to-text that respects your privacy. Press, speak, release. Your words appear exactly where you need them. Works everywhere, runs on your computer.",
-            "labels": ["voice", "ai", "productivity", "transcription"],
+            "labels": [
+                "voice",
+                "ai",
+                "productivity",
+                "transcription",
+                "Speech-To-Text",
+                "ASR",
+                "Voice-To-Text"
+            ],
             "category": "AI Tools",
             "url": "https://voice-ai.knowii.net",
             "free": false,

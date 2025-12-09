@@ -24,9 +24,20 @@ import {
     FaChalkboardTeacher,
     FaBoxOpen,
     FaCheckSquare,
-    FaReddit
+    FaReddit,
+    FaUser,
+    FaEnvelope,
+    FaStickyNote,
+    FaStore,
+    FaHandshake,
+    FaGithub,
+    FaTiktok,
+    FaMedium,
+    FaLinkedin,
+    FaHackerNews
 } from 'react-icons/fa'
-import { SiObsidian, SiAngular, SiNotion, SiTrello } from 'react-icons/si'
+import { SiObsidian, SiAngular, SiNotion, SiTrello, SiSubstack, SiBluesky } from 'react-icons/si'
+import { FaXTwitter, FaThreads } from 'react-icons/fa6'
 
 // Map of icon names to their components
 const iconMap: Record<string, IconType> = {
@@ -56,11 +67,26 @@ const iconMap: Record<string, IconType> = {
     FaBoxOpen,
     FaCheckSquare,
     FaReddit,
+    FaUser,
+    FaEnvelope,
+    FaStickyNote,
+    FaStore,
+    FaHandshake,
+    FaGithub,
+    FaTiktok,
+    FaMedium,
+    FaLinkedin,
+    FaHackerNews,
     // Simple Icons
     SiObsidian,
     SiAngular,
     SiNotion,
-    SiTrello
+    SiTrello,
+    SiSubstack,
+    SiBluesky,
+    // Font Awesome 6
+    FaXTwitter,
+    FaThreads
 }
 
 // Icon-specific colors (brand colors where applicable)
@@ -86,7 +112,21 @@ const iconColors: Record<string, string> = {
     FaPen: 'text-violet-400',
     FaChalkboardTeacher: 'text-orange-400',
     FaBoxOpen: 'text-amber-400',
-    FaCheckSquare: 'text-green-400'
+    FaCheckSquare: 'text-green-400',
+    FaUser: 'text-blue-400',
+    FaEnvelope: 'text-amber-400',
+    FaStickyNote: 'text-yellow-400',
+    FaStore: 'text-emerald-400',
+    FaHandshake: 'text-teal-400',
+    FaGithub: 'text-gray-300',
+    FaTiktok: 'text-gray-200',
+    FaMedium: 'text-gray-200',
+    FaLinkedin: 'text-blue-500',
+    FaHackerNews: 'text-orange-500',
+    SiSubstack: 'text-orange-400',
+    SiBluesky: 'text-sky-400',
+    FaXTwitter: 'text-gray-200',
+    FaThreads: 'text-gray-200'
 }
 
 // Category fallback icons (emojis or icons)

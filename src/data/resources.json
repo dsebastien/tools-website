@@ -2,35 +2,43 @@
     "resources": [
         {
             "name": "About Me",
-            "url": "https://www.dsebastien.net/about/"
+            "url": "https://www.dsebastien.net/about/",
+            "icon": "FaUser"
         },
         {
             "name": "Newsletter",
-            "url": "https://www.dsebastien.net/newsletter/"
+            "url": "https://www.dsebastien.net/newsletter/",
+            "icon": "FaEnvelope"
         },
         {
             "name": "Courses",
-            "url": "https://www.dsebastien.net/courses/"
+            "url": "https://www.dsebastien.net/courses/",
+            "icon": "FaGraduationCap"
         },
         {
             "name": "Public Notes",
-            "url": "https://notes.dsebastien.net/"
+            "url": "https://notes.dsebastien.net/",
+            "icon": "FaStickyNote"
         },
         {
             "name": "Store",
-            "url": "https://store.dsebastien.net"
+            "url": "https://store.dsebastien.net",
+            "icon": "FaStore"
         },
         {
             "name": "Knowii Community",
-            "url": "https://www.dsebastien.net/join-the-knowii-community-and-fix-your-information-overload-problem/"
+            "url": "https://www.dsebastien.net/join-the-knowii-community-and-fix-your-information-overload-problem/",
+            "icon": "FaUsers"
         },
         {
             "name": "Affiliate Program",
-            "url": "https://www.dsebastien.net/knowii-affiliate-program/"
+            "url": "https://www.dsebastien.net/knowii-affiliate-program/",
+            "icon": "FaHandshake"
         },
         {
             "name": "GitHub Profile",
-            "url": "https://github.com/dsebastien"
+            "url": "https://github.com/dsebastien",
+            "icon": "FaGithub"
         }
     ]
 }

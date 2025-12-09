@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
-import { FaGithub, FaLinkedin, FaHeart, FaTools } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
+import { FaHeart, FaTools } from 'react-icons/fa'
 import resourcesData from '@/data/resources.json'
+import socialsData from '@/data/socials.json'
+import ToolIcon from '@/components/tools/tool-icon'
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear()
@@ -34,8 +35,9 @@ const Footer: React.FC = () => {
                                         href={resource.url}
                                         target='_blank'
                                         rel='noopener noreferrer'
-                                        className='text-primary/70 hover:text-secondary transition-colors'
+                                        className='text-primary/70 hover:text-secondary flex items-center gap-2 transition-colors'
                                     >
+                                        <ToolIcon icon={resource.icon} category='' size='sm' />
                                         {resource.name}
                                     </a>
                                 </li>
@@ -46,34 +48,20 @@ const Footer: React.FC = () => {
                     {/* Connect */}
                     <div>
                         <h3 className='mb-4 font-semibold'>Connect</h3>
-                        <div className='flex gap-4'>
-                            <a
-                                href='https://github.com/dsebastien'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='text-primary/70 hover:text-secondary transition-colors'
-                                aria-label='GitHub'
-                            >
-                                <FaGithub className='h-6 w-6' />
-                            </a>
-                            <a
-                                href='https://x.com/daborski'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='text-primary/70 hover:text-secondary transition-colors'
-                                aria-label='X'
-                            >
-                                <FaXTwitter className='h-6 w-6' />
-                            </a>
-                            <a
-                                href='https://www.linkedin.com/in/yourprofile'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='text-primary/70 hover:text-secondary transition-colors'
-                                aria-label='LinkedIn'
-                            >
-                                <FaLinkedin className='h-6 w-6' />
-                            </a>
+                        <div className='flex flex-wrap gap-3'>
+                            {socialsData.socials.map((social) => (
+                                <a
+                                    key={social.url}
+                                    href={social.url}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    className='transition-transform hover:scale-110'
+                                    aria-label={social.name}
+                                    title={social.name}
+                                >
+                                    <ToolIcon icon={social.icon} category='' size='md' />
+                                </a>
+                            ))}
                         </div>
                         <p className='text-primary/70 mt-4 text-sm'>
                             <a

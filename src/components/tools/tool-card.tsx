@@ -127,9 +127,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
     return (
         <div
             className={cn(
-                'bg-background/50 border-primary/10 hover:border-secondary/50 group relative flex h-full cursor-pointer flex-col rounded-2xl border p-6 transition-all duration-300 hover:shadow-xl hover:shadow-black/10',
+                'bg-background/50 border-primary/10 hover:border-secondary/50 group relative flex h-full cursor-pointer flex-col rounded-xl border p-4 transition-all duration-300 hover:shadow-lg hover:shadow-black/10',
                 tool.featured && 'ring-secondary/30 ring-1',
-                isHovered && 'scale-[1.02]'
+                isHovered && 'scale-[1.01]'
             )}
             onClick={handleCardClick}
             onKeyDown={handleKeyDown}
@@ -141,26 +141,26 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
         >
             {/* Featured badge */}
             {tool.featured && (
-                <div className='from-secondary to-secondary/80 absolute -top-2 -right-2 flex items-center gap-1 rounded-full bg-gradient-to-r px-3 py-1 text-xs font-medium text-white shadow-lg'>
-                    <FaStar className='h-3 w-3' />
+                <div className='from-secondary to-secondary/80 absolute -top-2 -right-2 flex items-center gap-1 rounded-full bg-gradient-to-r px-2 py-0.5 text-xs font-medium text-white shadow-md'>
+                    <FaStar className='h-2.5 w-2.5' />
                     Featured
                 </div>
             )}
 
             {/* Header */}
-            <div className='mb-4 flex items-start justify-between'>
-                <div className='bg-primary/10 group-hover:bg-primary/20 flex h-14 w-14 items-center justify-center rounded-xl transition-colors'>
-                    <ToolIcon icon={tool.icon} category={tool.category} size='lg' />
+            <div className='mb-3 flex items-start justify-between'>
+                <div className='bg-primary/10 group-hover:bg-primary/20 flex h-10 w-10 items-center justify-center rounded-lg transition-colors'>
+                    <ToolIcon icon={tool.icon} category={tool.category} size='md' />
                 </div>
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-1.5'>
                     {tool.free ? (
-                        <span className='flex items-center gap-1 rounded-full bg-green-500/20 px-2 py-1 text-xs text-green-400'>
-                            <FaUnlock className='h-3 w-3' />
+                        <span className='flex items-center gap-1 rounded-full bg-green-500/20 px-1.5 py-0.5 text-xs text-green-400'>
+                            <FaUnlock className='h-2.5 w-2.5' />
                             Free
                         </span>
                     ) : (
-                        <span className='from-secondary/20 to-secondary/10 text-secondary flex items-center gap-1 rounded-full bg-gradient-to-r px-2 py-1 text-xs'>
-                            <FaLock className='h-3 w-3' />
+                        <span className='from-secondary/20 to-secondary/10 text-secondary flex items-center gap-1 rounded-full bg-gradient-to-r px-1.5 py-0.5 text-xs'>
+                            <FaLock className='h-2.5 w-2.5' />
                             Paid
                         </span>
                     )}
@@ -168,14 +168,14 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
             </div>
 
             {/* Title & Status */}
-            <div className='mb-2 flex items-center gap-2'>
-                <h3 className='group-hover:text-secondary text-lg font-semibold transition-colors'>
+            <div className='mb-1 flex items-center gap-2'>
+                <h3 className='group-hover:text-secondary font-semibold transition-colors'>
                     {tool.name}
                 </h3>
             </div>
             <span
                 className={cn(
-                    'mb-3 w-fit rounded-full border px-2 py-0.5 text-xs',
+                    'mb-2 w-fit rounded-full border px-1.5 py-0.5 text-xs',
                     statusColors[statusConfig.color]
                 )}
             >
@@ -183,51 +183,51 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
             </span>
 
             {/* Description */}
-            <p className='text-primary/70 mb-4 line-clamp-3 flex-1 text-sm leading-relaxed'>
-                {tool.description}
-            </p>
+            <p className='text-primary/70 mb-3 line-clamp-2 flex-1 text-sm'>{tool.description}</p>
 
             {/* Labels */}
-            <div className='mb-4 flex flex-wrap gap-1.5'>
-                {tool.labels.slice(0, 4).map((label) => (
+            <div className='mb-2 flex flex-wrap gap-1'>
+                {tool.labels.slice(0, 3).map((label) => (
                     <span
                         key={label}
-                        className='bg-primary/5 hover:bg-primary/10 text-primary/70 rounded-full px-2.5 py-1 text-xs transition-colors'
+                        className='bg-primary/5 text-primary/70 rounded-full px-2 py-0.5 text-xs'
                     >
                         {label}
                     </span>
                 ))}
-                {tool.labels.length > 4 && (
-                    <span className='text-primary/50 px-2 py-1 text-xs'>
-                        +{tool.labels.length - 4} more
+                {tool.labels.length > 3 && (
+                    <span className='text-primary/50 px-1 py-0.5 text-xs'>
+                        +{tool.labels.length - 3}
                     </span>
                 )}
             </div>
 
             {/* Technologies */}
-            <div className='border-primary/10 mb-4 border-t pt-4'>
-                <div className='flex flex-wrap gap-1.5'>
-                    {tool.technologies.slice(0, 4).map((tech) => (
-                        <span
-                            key={tech}
-                            className='border-secondary/30 text-secondary/80 rounded border px-2 py-0.5 text-xs'
-                        >
-                            {tech}
-                        </span>
-                    ))}
+            {tool.technologies.length > 0 && (
+                <div className='border-primary/10 mb-3 border-t pt-2'>
+                    <div className='flex flex-wrap gap-1'>
+                        {tool.technologies.slice(0, 3).map((tech) => (
+                            <span
+                                key={tech}
+                                className='border-secondary/30 text-secondary/80 rounded border px-1.5 py-0.5 text-xs'
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Actions */}
-            <div className='mt-auto flex items-center gap-2'>
+            <div className='mt-auto flex items-center gap-1.5'>
                 <a
                     href={tool.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='bg-secondary hover:bg-secondary/90 flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 font-medium text-white transition-colors'
+                    className='bg-secondary hover:bg-secondary/90 flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-sm font-medium text-white transition-colors'
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <FaExternalLinkAlt className='h-3.5 w-3.5' />
+                    <FaExternalLinkAlt className='h-3 w-3' />
                     Open
                 </a>
                 {tool.sourceCodeUrl && (
@@ -235,11 +235,11 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
                         href={tool.sourceCodeUrl}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='bg-primary/10 hover:bg-primary/20 text-primary/80 flex items-center justify-center rounded-lg p-2.5 transition-colors'
+                        className='bg-primary/10 hover:bg-primary/20 text-primary/80 flex items-center justify-center rounded-lg p-2 transition-colors'
                         title='View source code'
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <FaGithub className='h-4 w-4' />
+                        <FaGithub className='h-3.5 w-3.5' />
                     </a>
                 )}
                 {tool.docsUrl && (
@@ -247,11 +247,11 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
                         href={tool.docsUrl}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='bg-primary/10 hover:bg-primary/20 text-primary/80 flex items-center justify-center rounded-lg p-2.5 transition-colors'
+                        className='bg-primary/10 hover:bg-primary/20 text-primary/80 flex items-center justify-center rounded-lg p-2 transition-colors'
                         title='View documentation'
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <FaBook className='h-4 w-4' />
+                        <FaBook className='h-3.5 w-3.5' />
                     </a>
                 )}
             </div>
