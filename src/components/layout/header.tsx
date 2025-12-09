@@ -19,7 +19,7 @@ const Header: React.FC = () => {
                                 </div>
                             </div>
                             <span className='from-primary to-primary/80 bg-gradient-to-r bg-clip-text text-lg font-bold tracking-tight text-transparent sm:text-xl md:text-2xl'>
-                                dSebastien Tools
+                                dSebastien's Toolbox
                             </span>
                         </Link>
                     </div>

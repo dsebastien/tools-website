@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
                             <div className='bg-secondary/10 flex h-10 w-10 items-center justify-center rounded-full'>
                                 <FaTools className='text-secondary h-5 w-5' />
                             </div>
-                            <span className='text-lg font-bold'>dSebastien Tools</span>
+                            <span className='text-lg font-bold'>dSebastien's Toolbox</span>
                         </Link>
                         <p className='text-primary/70 text-sm'>
                             A collection of free and paid tools, plugins, and utilities to boost

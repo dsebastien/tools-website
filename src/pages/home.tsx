@@ -129,9 +129,14 @@ const HomePage: React.FC = () => {
                 <div className='mx-auto max-w-4xl text-center'>
                     <h1 className='mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
                         Tools by{' '}
-                        <span className='from-secondary to-secondary/70 bg-gradient-to-r bg-clip-text text-transparent'>
+                        <a
+                            href='https://www.dsebastien.net'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='from-secondary to-secondary/70 bg-gradient-to-r bg-clip-text text-transparent transition-opacity hover:opacity-80'
+                        >
                             dSebastien
-                        </span>
+                        </a>
                     </h1>
                     <p className='text-primary/70 mx-auto mb-8 max-w-2xl text-lg sm:text-xl md:text-2xl'>
                         A collection of free and paid tools, plugins, and utilities I've created to
