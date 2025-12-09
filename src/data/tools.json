@@ -285,6 +285,19 @@
             "icon": "FaPodcast"
         },
         {
+            "id": "learn-typescript-book",
+            "name": "Learn TypeScript by Building Web Applications",
+            "description": "A practical guide to understanding TypeScript and its role in modern web development. Build real-world applications while learning TypeScript fundamentals.",
+            "labels": ["book", "typescript", "web-development", "learning", "programming"],
+            "category": "Publications",
+            "url": "https://www.amazon.com/Learn-TypeScript-Building-Applications-understanding/dp/1789615860",
+            "free": false,
+            "technologies": ["TypeScript", "JavaScript"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaBook"
+        },
+        {
             "id": "free-pkm-tools-database",
             "name": "Free Tools for Thought Database",
             "description": "Discover the Ultimate Database of ~300 note-taking and Personal Knowledge Management Tools.",
