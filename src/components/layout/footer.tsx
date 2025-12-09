@@ -63,14 +63,6 @@ const Footer: React.FC = () => {
                                 </a>
                             ))}
                         </div>
-                        <p className='text-primary/70 mt-4 text-sm'>
-                            <a
-                                href='mailto:sebastien@dsebastien.net'
-                                className='hover:text-secondary transition-colors'
-                            >
-                                sebastien@dsebastien.net
-                            </a>
-                        </p>
                     </div>
                 </div>
 
