@@ -133,7 +133,7 @@ const HomePage: React.FC = () => {
                             href='https://www.dsebastien.net'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='from-secondary to-secondary/70 bg-gradient-to-r bg-clip-text text-transparent transition-opacity hover:opacity-80'
+                            className='text-primary hover:text-secondary transition-colors'
                         >
                             dSebastien
                         </a>
