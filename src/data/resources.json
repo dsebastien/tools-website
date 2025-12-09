@@ -1,0 +1,36 @@
+{
+    "resources": [
+        {
+            "name": "About Me",
+            "url": "https://www.dsebastien.net/about/"
+        },
+        {
+            "name": "Newsletter",
+            "url": "https://www.dsebastien.net/newsletter/"
+        },
+        {
+            "name": "Courses",
+            "url": "https://www.dsebastien.net/courses/"
+        },
+        {
+            "name": "Public Notes",
+            "url": "https://notes.dsebastien.net/"
+        },
+        {
+            "name": "Store",
+            "url": "https://store.dsebastien.net"
+        },
+        {
+            "name": "Knowii Community",
+            "url": "https://www.dsebastien.net/join-the-knowii-community-and-fix-your-information-overload-problem/"
+        },
+        {
+            "name": "Affiliate Program",
+            "url": "https://www.dsebastien.net/knowii-affiliate-program/"
+        },
+        {
+            "name": "GitHub Profile",
+            "url": "https://github.com/dsebastien"
+        }
+    ]
+}

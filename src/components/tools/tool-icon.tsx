@@ -1,0 +1,148 @@
+import { IconType } from 'react-icons'
+import {
+    FaCalendarAlt,
+    FaMicrophone,
+    FaGhost,
+    FaYoutube,
+    FaTerminal,
+    FaLightbulb,
+    FaTools,
+    FaRobot,
+    FaCode,
+    FaGlobe,
+    FaWrench,
+    FaVideo,
+    FaGraduationCap,
+    FaBook,
+    FaBookOpen,
+    FaDatabase,
+    FaNewspaper,
+    FaUsers,
+    FaFileAlt,
+    FaBrain,
+    FaPen,
+    FaChalkboardTeacher,
+    FaBoxOpen,
+    FaCheckSquare,
+    FaReddit
+} from 'react-icons/fa'
+import { SiObsidian, SiAngular, SiNotion, SiTrello } from 'react-icons/si'
+
+// Map of icon names to their components
+const iconMap: Record<string, IconType> = {
+    // Font Awesome icons
+    FaCalendarAlt,
+    FaMicrophone,
+    FaGhost,
+    FaYoutube,
+    FaTerminal,
+    FaLightbulb,
+    FaTools,
+    FaRobot,
+    FaCode,
+    FaGlobe,
+    FaWrench,
+    FaVideo,
+    FaGraduationCap,
+    FaBook,
+    FaBookOpen,
+    FaDatabase,
+    FaNewspaper,
+    FaUsers,
+    FaFileAlt,
+    FaBrain,
+    FaPen,
+    FaChalkboardTeacher,
+    FaBoxOpen,
+    FaCheckSquare,
+    FaReddit,
+    // Simple Icons
+    SiObsidian,
+    SiAngular,
+    SiNotion,
+    SiTrello
+}
+
+// Icon-specific colors (brand colors where applicable)
+const iconColors: Record<string, string> = {
+    FaYoutube: 'text-red-500',
+    FaGhost: 'text-gray-300',
+    SiObsidian: 'text-purple-400',
+    SiAngular: 'text-red-500',
+    SiNotion: 'text-gray-200',
+    SiTrello: 'text-blue-400',
+    FaReddit: 'text-orange-500',
+    FaCalendarAlt: 'text-blue-400',
+    FaTerminal: 'text-green-400',
+    FaLightbulb: 'text-yellow-400',
+    FaRobot: 'text-cyan-400',
+    FaCode: 'text-emerald-400',
+    FaGlobe: 'text-blue-400',
+    FaGraduationCap: 'text-indigo-400',
+    FaBook: 'text-amber-500',
+    FaBookOpen: 'text-teal-400',
+    FaNewspaper: 'text-gray-300',
+    FaBrain: 'text-pink-400',
+    FaPen: 'text-violet-400',
+    FaChalkboardTeacher: 'text-orange-400',
+    FaBoxOpen: 'text-amber-400',
+    FaCheckSquare: 'text-green-400'
+}
+
+// Category fallback icons (emojis or icons)
+const categoryFallbacks: Record<string, string> = {
+    'AI Tools': '🤖',
+    'CLI Tools': '⌨️',
+    'Courses': '🎓',
+    'Free Resources': '🎁',
+    'Obsidian': '💎',
+    'Open Source': '💻',
+    'Platforms': '🌐',
+    'Productivity': '📅',
+    'Publications': '📰',
+    'Utilities': '🔧',
+    'Video Tools': '🎬'
+}
+
+interface ToolIconProps {
+    icon?: string
+    category: string
+    className?: string
+    size?: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+const sizeClasses = {
+    sm: 'h-4 w-4',
+    md: 'h-6 w-6',
+    lg: 'h-8 w-8',
+    xl: 'h-10 w-10'
+}
+
+const ToolIcon: React.FC<ToolIconProps> = ({ icon, category, className = '', size = 'md' }) => {
+    // If icon is a URL, render an image
+    if (icon && (icon.startsWith('http') || icon.startsWith('/'))) {
+        return (
+            <img src={icon} alt='' className={`${sizeClasses[size]} object-contain ${className}`} />
+        )
+    }
+
+    // If icon is a known react-icon name, render it
+    if (icon && iconMap[icon]) {
+        const IconComponent = iconMap[icon]
+        const colorClass = iconColors[icon] || 'text-secondary'
+        return <IconComponent className={`${sizeClasses[size]} ${colorClass} ${className}`} />
+    }
+
+    // Fallback to category emoji
+    const emoji = categoryFallbacks[category] || '🛠️'
+    const emojiSizes = {
+        sm: 'text-base',
+        md: 'text-xl',
+        lg: 'text-2xl',
+        xl: 'text-3xl'
+    }
+
+    return <span className={`${emojiSizes[size]} ${className}`}>{emoji}</span>
+}
+
+export default ToolIcon
