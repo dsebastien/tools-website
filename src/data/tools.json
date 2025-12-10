@@ -621,6 +621,21 @@
             "featured": false,
             "status": "active",
             "icon": "FaHandshake"
+        },
+        {
+            "id": "whatsapp-claude-agent",
+            "name": "WhatsApp Claude Agent (CLI)",
+            "description": "Bridge WhatsApp with Claude Code. Interact with your files, run commands, and get AI assistance directly from WhatsApp messages.",
+            "labels": ["ai", "whatsapp", "claude", "automation", "cli"],
+            "category": "AI Tools",
+            "url": "https://github.com/dsebastien/whatsapp-claude-agent",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/whatsapp-claude-agent",
+            "technologies": ["TypeScript", "Bun", "Claude Agent SDK"],
+            "featured": false,
+            "status": "beta",
+            "icon": "FaWhatsapp"
         }
     ],
     "categories": [
