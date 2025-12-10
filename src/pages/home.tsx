@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useParams, useNavigate } from 'react-router'
 import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import Section from '@/components/ui/section'
@@ -12,6 +13,9 @@ import type { Tool, ToolStatus, ToolsData } from '@/types/tool'
 const typedToolsData = toolsData as ToolsData
 
 const HomePage: React.FC = () => {
+    const { toolId } = useParams<{ toolId?: string }>()
+    const navigate = useNavigate()
+
     // Filter state
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('All')
@@ -20,10 +24,16 @@ const HomePage: React.FC = () => {
     const [showFreeOnly, setShowFreeOnly] = useState(false)
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
-    // Modal state
-    const [selectedTool, setSelectedTool] = useState<Tool | null>(null)
-    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
+    // Command palette state
     const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false)
+
+    // Derive modal state from URL
+    const selectedTool = useMemo(() => {
+        if (!toolId) return null
+        return typedToolsData.tools.find((t) => t.id === toolId) || null
+    }, [toolId])
+
+    const isDetailModalOpen = !!selectedTool
 
     // Get all unique labels from tools
     const allLabels = useMemo(() => {
@@ -107,15 +117,16 @@ const HomePage: React.FC = () => {
         return () => document.removeEventListener('keydown', handleKeyDown)
     }, [])
 
-    const handleShowDetails = (tool: Tool) => {
-        setSelectedTool(tool)
-        setIsDetailModalOpen(true)
-    }
+    const handleShowDetails = useCallback(
+        (tool: Tool) => {
+            navigate(`/tool/${tool.id}`)
+        },
+        [navigate]
+    )
 
-    const handleCloseDetails = () => {
-        setIsDetailModalOpen(false)
-        setSelectedTool(null)
-    }
+    const handleCloseDetails = useCallback(() => {
+        navigate('/')
+    }, [navigate])
 
     // Stats
     const totalTools = typedToolsData.tools.length

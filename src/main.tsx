@@ -18,6 +18,7 @@ ReactDOM.createRoot(rootElement).render(
             <Routes>
                 <Route element={<AppLayout />}>
                     <Route path='/' element={<HomePage />} />
+                    <Route path='/tool/:toolId' element={<HomePage />} />
                 </Route>
             </Routes>
         </HashRouter>
