@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router'
 import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     // Derive filter state from URL search params
-    const searchQuery = searchParams.get('q') || ''
+    const searchQueryFromUrl = searchParams.get('q') || ''
     const selectedCategory = searchParams.get('category') || 'All'
     const selectedLabels = useMemo(() => {
         const labels = searchParams.get('labels')
@@ -30,6 +30,18 @@ const HomePage: React.FC = () => {
     }, [searchParams])
     const showFreeOnly = searchParams.get('free') === 'true'
     const viewMode = (searchParams.get('view') as 'grid' | 'list') || 'grid'
+
+    // Local state for search input (for smooth typing)
+    const [localSearchQuery, setLocalSearchQuery] = useState(searchQueryFromUrl)
+    const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+    // Sync local search query when URL changes (e.g., browser back/forward)
+    useEffect(() => {
+        setLocalSearchQuery(searchQueryFromUrl)
+    }, [searchQueryFromUrl])
+
+    // Use local state for filtering (immediate feedback while typing)
+    const searchQuery = localSearchQuery
 
     // Helper to update search params while preserving others
     const updateSearchParam = useCallback(
@@ -52,9 +64,29 @@ const HomePage: React.FC = () => {
 
     // Filter state setters that update URL
     const setSearchQuery = useCallback(
-        (query: string) => updateSearchParam('q', query),
+        (query: string) => {
+            // Update local state immediately for smooth typing
+            setLocalSearchQuery(query)
+
+            // Debounce the URL update
+            if (searchDebounceRef.current) {
+                clearTimeout(searchDebounceRef.current)
+            }
+            searchDebounceRef.current = setTimeout(() => {
+                updateSearchParam('q', query)
+            }, 300)
+        },
         [updateSearchParam]
     )
+
+    // Cleanup debounce timer on unmount
+    useEffect(() => {
+        return () => {
+            if (searchDebounceRef.current) {
+                clearTimeout(searchDebounceRef.current)
+            }
+        }
+    }, [])
     const setSelectedCategory = useCallback(
         (category: string) => updateSearchParam('category', category),
         [updateSearchParam]
