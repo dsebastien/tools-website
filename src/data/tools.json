@@ -517,6 +517,27 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-life-tracker",
+            "name": "Obsidian Life Tracker",
+            "description": "Capture and visualize the data that matters in your life. Includes a Base View with 12 chart types including heatmaps, line, bar, area, pie, radar, and more.",
+            "labels": [
+                "obsidian",
+                "plugin",
+                "data-visualization",
+                "life-tracking",
+                "quantified-self"
+            ],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-life-tracker-base-view",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-life-tracker-base-view",
+            "technologies": ["TypeScript", "Obsidian", "Chart.js"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "knowii-community",
             "name": "Knowii Complete Knowledge System",
             "description": "The central hub integrating community, customers, content, courses, products and services. For leaders, knowledge workers, solopreneurs, and content creators who want to break free from information overload.",
