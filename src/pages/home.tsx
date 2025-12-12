@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
-import { useParams, useNavigate } from 'react-router'
+import { useParams, useNavigate, useSearchParams } from 'react-router'
 import { FaGithub, FaLinkedin, FaRocket, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import Section from '@/components/ui/section'
@@ -15,14 +15,68 @@ const typedToolsData = toolsData as ToolsData
 const HomePage: React.FC = () => {
     const { toolId } = useParams<{ toolId?: string }>()
     const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    // Filter state
-    const [searchQuery, setSearchQuery] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState('All')
-    const [selectedLabels, setSelectedLabels] = useState<string[]>([])
-    const [selectedStatuses, setSelectedStatuses] = useState<ToolStatus[]>([])
-    const [showFreeOnly, setShowFreeOnly] = useState(false)
-    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+    // Derive filter state from URL search params
+    const searchQuery = searchParams.get('q') || ''
+    const selectedCategory = searchParams.get('category') || 'All'
+    const selectedLabels = useMemo(() => {
+        const labels = searchParams.get('labels')
+        return labels ? labels.split(',').filter(Boolean) : []
+    }, [searchParams])
+    const selectedStatuses = useMemo(() => {
+        const statuses = searchParams.get('status')
+        return statuses ? (statuses.split(',').filter(Boolean) as ToolStatus[]) : []
+    }, [searchParams])
+    const showFreeOnly = searchParams.get('free') === 'true'
+    const viewMode = (searchParams.get('view') as 'grid' | 'list') || 'grid'
+
+    // Helper to update search params while preserving others
+    const updateSearchParam = useCallback(
+        (key: string, value: string | null) => {
+            setSearchParams(
+                (prev) => {
+                    const newParams = new URLSearchParams(prev)
+                    if (value === null || value === '' || value === 'All' || value === 'grid') {
+                        newParams.delete(key)
+                    } else {
+                        newParams.set(key, value)
+                    }
+                    return newParams
+                },
+                { replace: true }
+            )
+        },
+        [setSearchParams]
+    )
+
+    // Filter state setters that update URL
+    const setSearchQuery = useCallback(
+        (query: string) => updateSearchParam('q', query),
+        [updateSearchParam]
+    )
+    const setSelectedCategory = useCallback(
+        (category: string) => updateSearchParam('category', category),
+        [updateSearchParam]
+    )
+    const setSelectedLabels = useCallback(
+        (labels: string[]) =>
+            updateSearchParam('labels', labels.length > 0 ? labels.join(',') : null),
+        [updateSearchParam]
+    )
+    const setSelectedStatuses = useCallback(
+        (statuses: ToolStatus[]) =>
+            updateSearchParam('status', statuses.length > 0 ? statuses.join(',') : null),
+        [updateSearchParam]
+    )
+    const setShowFreeOnly = useCallback(
+        (free: boolean) => updateSearchParam('free', free ? 'true' : null),
+        [updateSearchParam]
+    )
+    const setViewMode = useCallback(
+        (mode: 'grid' | 'list') => updateSearchParam('view', mode),
+        [updateSearchParam]
+    )
 
     // Command palette state
     const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false)
@@ -119,14 +173,18 @@ const HomePage: React.FC = () => {
 
     const handleShowDetails = useCallback(
         (tool: Tool) => {
-            navigate(`/tool/${tool.id}`)
+            // Preserve search params when opening modal
+            const params = searchParams.toString()
+            navigate(`/tool/${tool.id}${params ? `?${params}` : ''}`)
         },
-        [navigate]
+        [navigate, searchParams]
     )
 
     const handleCloseDetails = useCallback(() => {
-        navigate('/')
-    }, [navigate])
+        // Preserve search params when closing modal
+        const params = searchParams.toString()
+        navigate(`/${params ? `?${params}` : ''}`)
+    }, [navigate, searchParams])
 
     // Stats
     const totalTools = typedToolsData.tools.length
