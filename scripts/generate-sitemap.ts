@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 /**
  * Generates a sitemap.xml for the tools website.
- * Includes the homepage and all tool detail pages.
+ * Includes the homepage, all tool detail pages, and all label pages.
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
@@ -46,6 +46,9 @@ interface SitemapUrl {
 const toolsJsonPath = join(__dirname, '../src/data/tools.json')
 const toolsData: ToolsData = JSON.parse(readFileSync(toolsJsonPath, 'utf-8'))
 
+// Extract all unique labels
+const allLabels = Array.from(new Set(toolsData.tools.flatMap((tool) => tool.labels))).sort()
+
 // Get current date in YYYY-MM-DD format
 const today = new Date().toISOString().split('T')[0]
 
@@ -61,13 +64,23 @@ function generateSitemap(): string {
         priority: '1.0'
     })
 
-    // Add each tool page
+    // Add each tool page (using clean URLs without hash)
     for (const tool of toolsData.tools) {
         urls.push({
-            loc: `${BASE_URL}/#/tool/${tool.id}`,
+            loc: `${BASE_URL}/tool/${tool.id}`,
             lastmod: today,
             changefreq: 'monthly',
             priority: '0.8'
+        })
+    }
+
+    // Add each label page
+    for (const label of allLabels) {
+        urls.push({
+            loc: `${BASE_URL}/label/${encodeURIComponent(label)}`,
+            lastmod: today,
+            changefreq: 'weekly',
+            priority: '0.6'
         })
     }
 
@@ -106,7 +119,8 @@ function writeSitemap(): void {
     console.log(`✓ Sitemap generated: ${sitemapPath}`)
     console.log(`  - Homepage: 1 URL`)
     console.log(`  - Tools: ${toolsData.tools.length} URLs`)
-    console.log(`  - Total: ${toolsData.tools.length + 1} URLs`)
+    console.log(`  - Labels: ${allLabels.length} URLs`)
+    console.log(`  - Total: ${toolsData.tools.length + allLabels.length + 1} URLs`)
 }
 
 writeSitemap()

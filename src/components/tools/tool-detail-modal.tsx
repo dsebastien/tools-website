@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router'
 import {
     FaTimes,
     FaExternalLinkAlt,
@@ -149,12 +150,14 @@ const ToolDetailModal: React.FC<ToolDetailModalProps> = ({ tool, statuses, isOpe
                         </div>
                         <div className='flex flex-wrap gap-2'>
                             {tool.labels.map((label) => (
-                                <span
+                                <Link
                                     key={label}
-                                    className='bg-primary/5 hover:bg-primary/10 text-primary/70 rounded-full px-3 py-1.5 text-sm transition-colors'
+                                    to={`/label/${encodeURIComponent(label)}`}
+                                    onClick={onClose}
+                                    className='bg-primary/5 hover:bg-secondary/20 hover:text-secondary text-primary/70 rounded-full px-3 py-1.5 text-sm transition-colors'
                                 >
                                     {label}
-                                </span>
+                                </Link>
                             ))}
                         </div>
                     </div>

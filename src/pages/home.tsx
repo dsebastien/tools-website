@@ -13,9 +13,12 @@ import type { Tool, ToolStatus, ToolsData } from '@/types/tool'
 const typedToolsData = toolsData as ToolsData
 
 const HomePage: React.FC = () => {
-    const { toolId } = useParams<{ toolId?: string }>()
+    const { toolId, labelName } = useParams<{ toolId?: string; labelName?: string }>()
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams()
+
+    // Decode the label name for display and filtering
+    const decodedLabelName = labelName ? decodeURIComponent(labelName) : null
 
     // Derive filter state from URL search params
     const searchQueryFromUrl = searchParams.get('q') || ''
@@ -149,7 +152,12 @@ const HomePage: React.FC = () => {
                 return false
             }
 
-            // Labels filter
+            // Label page filter (from URL route)
+            if (decodedLabelName && !tool.labels.includes(decodedLabelName)) {
+                return false
+            }
+
+            // Labels filter (from search params)
             if (
                 selectedLabels.length > 0 &&
                 !selectedLabels.some((label) => tool.labels.includes(label))
@@ -169,7 +177,14 @@ const HomePage: React.FC = () => {
 
             return true
         })
-    }, [searchQuery, selectedCategory, selectedLabels, selectedStatuses, showFreeOnly])
+    }, [
+        searchQuery,
+        selectedCategory,
+        decodedLabelName,
+        selectedLabels,
+        selectedStatuses,
+        showFreeOnly
+    ])
 
     // Sort: featured first, then by name
     const sortedTools = useMemo(() => {
@@ -223,48 +238,73 @@ const HomePage: React.FC = () => {
     const freeTools = typedToolsData.tools.filter((t) => t.free).length
     const activeTools = typedToolsData.tools.filter((t) => t.status === 'active').length
 
+    // Update document title based on the current page
+    useEffect(() => {
+        if (decodedLabelName) {
+            document.title = `${decodedLabelName} - dSebastien's Toolbox`
+        } else {
+            document.title =
+                "dSebastien's Toolbox - Free & Paid Productivity Tools, Plugins & Utilities"
+        }
+    }, [decodedLabelName])
+
     return (
         <>
             {/* Hero Section */}
             <Section className='pt-16 pb-12 sm:pt-24 sm:pb-16 md:pt-32 md:pb-20'>
                 <div className='mx-auto max-w-4xl text-center'>
-                    <h1 className='mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
-                        Tools by{' '}
-                        <a
-                            href='https://www.dsebastien.net'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='text-primary hover:text-secondary transition-colors'
-                        >
-                            dSebastien
-                        </a>
-                    </h1>
-                    <p className='text-primary/70 mx-auto mb-8 max-w-2xl text-lg sm:text-xl md:text-2xl'>
-                        A collection of free and paid tools, plugins, and utilities I've created to
-                        boost productivity and solve real problems.
-                    </p>
+                    {decodedLabelName ? (
+                        <>
+                            <h1 className='mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
+                                <span className='text-primary/60'>Label:</span> {decodedLabelName}
+                            </h1>
+                            <p className='text-primary/70 mx-auto mb-8 max-w-2xl text-lg sm:text-xl md:text-2xl'>
+                                Tools labeled with "{decodedLabelName}"
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <h1 className='mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
+                                Tools by{' '}
+                                <a
+                                    href='https://www.dsebastien.net'
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    className='text-primary hover:text-secondary transition-colors'
+                                >
+                                    dSebastien
+                                </a>
+                            </h1>
+                            <p className='text-primary/70 mx-auto mb-8 max-w-2xl text-lg sm:text-xl md:text-2xl'>
+                                A collection of free and paid tools, plugins, and utilities I've
+                                created to boost productivity and solve real problems.
+                            </p>
+                        </>
+                    )}
 
-                    {/* Stats */}
-                    <div className='mb-10 flex flex-wrap justify-center gap-6 sm:gap-10'>
-                        <div className='text-center'>
-                            <div className='text-secondary text-3xl font-bold sm:text-4xl'>
-                                {totalTools}
+                    {/* Stats - only show on main page */}
+                    {!decodedLabelName && (
+                        <div className='mb-10 flex flex-wrap justify-center gap-6 sm:gap-10'>
+                            <div className='text-center'>
+                                <div className='text-secondary text-3xl font-bold sm:text-4xl'>
+                                    {totalTools}
+                                </div>
+                                <div className='text-primary/60 text-sm'>Total Tools</div>
                             </div>
-                            <div className='text-primary/60 text-sm'>Total Tools</div>
-                        </div>
-                        <div className='text-center'>
-                            <div className='text-3xl font-bold text-green-400 sm:text-4xl'>
-                                {freeTools}
+                            <div className='text-center'>
+                                <div className='text-3xl font-bold text-green-400 sm:text-4xl'>
+                                    {freeTools}
+                                </div>
+                                <div className='text-primary/60 text-sm'>Free & Open Source</div>
                             </div>
-                            <div className='text-primary/60 text-sm'>Free & Open Source</div>
-                        </div>
-                        <div className='text-center'>
-                            <div className='text-3xl font-bold text-blue-400 sm:text-4xl'>
-                                {activeTools}
+                            <div className='text-center'>
+                                <div className='text-3xl font-bold text-blue-400 sm:text-4xl'>
+                                    {activeTools}
+                                </div>
+                                <div className='text-primary/60 text-sm'>Actively Maintained</div>
                             </div>
-                            <div className='text-primary/60 text-sm'>Actively Maintained</div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Quick tip */}
                     <div className='bg-secondary/10 border-secondary/20 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm'>

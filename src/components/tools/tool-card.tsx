@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { FaExternalLinkAlt, FaGithub, FaBook, FaStar, FaLock, FaUnlock } from 'react-icons/fa'
 import { cn } from '@/lib/utils'
 import ToolIcon from '@/components/tools/tool-icon'
@@ -85,12 +86,14 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
                 {/* Labels */}
                 <div className='hidden shrink-0 gap-1 md:flex'>
                     {tool.labels.slice(0, 3).map((label) => (
-                        <span
+                        <Link
                             key={label}
-                            className='bg-primary/5 text-primary/60 rounded-full px-2 py-0.5 text-xs'
+                            to={`/label/${encodeURIComponent(label)}`}
+                            onClick={(e) => e.stopPropagation()}
+                            className='bg-primary/5 hover:bg-secondary/20 hover:text-secondary text-primary/60 rounded-full px-2 py-0.5 text-xs transition-colors'
                         >
                             {label}
-                        </span>
+                        </Link>
                     ))}
                 </div>
 
@@ -188,12 +191,14 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, statuses, onShowDetails, view
             {/* Labels */}
             <div className='mb-2 flex flex-wrap gap-1'>
                 {tool.labels.slice(0, 3).map((label) => (
-                    <span
+                    <Link
                         key={label}
-                        className='bg-primary/5 text-primary/70 rounded-full px-2 py-0.5 text-xs'
+                        to={`/label/${encodeURIComponent(label)}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className='bg-primary/5 hover:bg-secondary/20 hover:text-secondary text-primary/70 rounded-full px-2 py-0.5 text-xs transition-colors'
                     >
                         {label}
-                    </span>
+                    </Link>
                 ))}
                 {tool.labels.length > 3 && (
                     <span className='text-primary/50 px-1 py-0.5 text-xs'>
