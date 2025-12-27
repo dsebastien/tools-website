@@ -17,6 +17,13 @@ interface Tool {
     name: string
     description: string
     labels: string[]
+    category: string
+    url: string
+    free: boolean
+    technologies: string[]
+    license?: string
+    sourceCodeUrl?: string
+    docsUrl?: string
 }
 
 interface ToolsData {
@@ -45,6 +52,197 @@ function escapeHtml(text: string): string {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;')
+}
+
+// Shared author schema for all pages
+const authorSchema = {
+    '@type': 'Person',
+    '@id': `${BASE_URL}/#person`,
+    'name': 'Sébastien Dubois',
+    'givenName': 'Sébastien',
+    'familyName': 'Dubois',
+    'url': 'https://dsebastien.net',
+    'image': 'https://www.dsebastien.net/content/images/size/w2000/2024/04/Seb-2022.jpg',
+    'jobTitle': 'Knowledge Management & Productivity Mentor',
+    'worksFor': {
+        '@type': 'Organization',
+        '@id': `${BASE_URL}/#organization`,
+        'name': 'DeveloPassion',
+        'url': 'https://developassion.be'
+    },
+    'sameAs': [
+        'https://www.linkedin.com/in/sebastiend/',
+        'https://bsky.app/profile/dsebastien.net',
+        'https://github.com/dsebastien',
+        'https://www.youtube.com/@dsebastien',
+        'https://x.com/dSebastien'
+    ]
+}
+
+const publisherSchema = {
+    '@type': 'Organization',
+    '@id': `${BASE_URL}/#organization`,
+    'name': 'DeveloPassion',
+    'url': 'https://developassion.be',
+    'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://www.dsebastien.net/content/images/size/w256h256/2022/11/logo_symbol.png',
+        'width': 256,
+        'height': 256
+    }
+}
+
+/**
+ * Map tool category to Schema.org applicationCategory
+ */
+function mapCategory(category: string): string {
+    const categoryMap: Record<string, string> = {
+        'Productivity': 'ProductivityApplication',
+        'AI Tools': 'UtilitiesApplication',
+        'Courses': 'EducationalApplication',
+        'Obsidian Plugins': 'BrowserApplication',
+        'CLI Tools': 'DeveloperApplication',
+        'Web Apps': 'WebApplication',
+        'Templates': 'DesignApplication'
+    }
+    return categoryMap[category] || 'WebApplication'
+}
+
+/**
+ * Generate SoftwareApplication JSON-LD schema for a tool
+ */
+function generateToolSchema(tool: Tool): string {
+    const toolUrl = `${BASE_URL}/tool/${tool.id}`
+    const today = new Date().toISOString().split('T')[0]
+
+    const schema = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'SoftwareApplication',
+                '@id': `${toolUrl}#software`,
+                'name': tool.name,
+                'description': tool.description,
+                'url': tool.url,
+                'applicationCategory': mapCategory(tool.category),
+                'operatingSystem': 'Web',
+                'author': { '@id': `${BASE_URL}/#person` },
+                'publisher': { '@id': `${BASE_URL}/#organization` },
+                'provider': {
+                    '@type': 'Organization',
+                    'name': "dSebastien's Toolbox",
+                    'url': BASE_URL
+                },
+                'offers': {
+                    '@type': 'Offer',
+                    'price': tool.free ? '0' : undefined,
+                    'priceCurrency': 'USD',
+                    'availability': 'https://schema.org/InStock'
+                },
+                'datePublished': today,
+                'dateModified': today,
+                'inLanguage': 'en',
+                'keywords': tool.labels.join(', '),
+                'isPartOf': {
+                    '@type': 'WebSite',
+                    '@id': `${BASE_URL}/#website`,
+                    'name': "dSebastien's Toolbox",
+                    'url': BASE_URL
+                },
+                ...(tool.license && { license: tool.license }),
+                ...(tool.sourceCodeUrl && {
+                    codeRepository: tool.sourceCodeUrl,
+                    isAccessibleForFree: true
+                }),
+                ...(tool.technologies.length > 0 && {
+                    runtimePlatform: tool.technologies.join(', ')
+                })
+            },
+            authorSchema,
+            publisherSchema,
+            {
+                '@type': 'BreadcrumbList',
+                '@id': `${toolUrl}#breadcrumb`,
+                'itemListElement': [
+                    {
+                        '@type': 'ListItem',
+                        'position': 1,
+                        'name': 'Home',
+                        'item': BASE_URL
+                    },
+                    {
+                        '@type': 'ListItem',
+                        'position': 2,
+                        'name': tool.category,
+                        'item': `${BASE_URL}/?category=${encodeURIComponent(tool.category)}`
+                    },
+                    {
+                        '@type': 'ListItem',
+                        'position': 3,
+                        'name': tool.name,
+                        'item': toolUrl
+                    }
+                ]
+            }
+        ]
+    }
+
+    return JSON.stringify(schema, null, 12)
+}
+
+/**
+ * Generate CollectionPage JSON-LD schema for a label page
+ */
+function generateLabelSchema(label: string, encodedLabel: string): string {
+    const labelUrl = `${BASE_URL}/label/${encodedLabel}`
+
+    const schema = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'CollectionPage',
+                '@id': `${labelUrl}#collection`,
+                'name': `${label} - dSebastien's Toolbox`,
+                'description': `Tools labeled with "${label}"`,
+                'url': labelUrl,
+                'creator': { '@id': `${BASE_URL}/#person` },
+                'publisher': { '@id': `${BASE_URL}/#organization` },
+                'isPartOf': {
+                    '@type': 'WebSite',
+                    '@id': `${BASE_URL}/#website`,
+                    'name': "dSebastien's Toolbox",
+                    'url': BASE_URL
+                },
+                'about': {
+                    '@type': 'Thing',
+                    'name': label
+                },
+                'inLanguage': 'en'
+            },
+            authorSchema,
+            publisherSchema,
+            {
+                '@type': 'BreadcrumbList',
+                '@id': `${labelUrl}#breadcrumb`,
+                'itemListElement': [
+                    {
+                        '@type': 'ListItem',
+                        'position': 1,
+                        'name': 'Home',
+                        'item': BASE_URL
+                    },
+                    {
+                        '@type': 'ListItem',
+                        'position': 2,
+                        'name': label,
+                        'item': labelUrl
+                    }
+                ]
+            }
+        ]
+    }
+
+    return JSON.stringify(schema, null, 12)
 }
 
 /**
@@ -98,6 +296,13 @@ function generateToolPageHtml(tool: Tool): string {
     html = html.replace(
         /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
         `<meta name="twitter:description" content="${escapeHtml(description)}" />`
+    )
+
+    // Replace JSON-LD schema with SoftwareApplication schema
+    const toolSchema = generateToolSchema(tool)
+    html = html.replace(
+        /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+        `<script type="application/ld+json">\n${toolSchema}\n        </script>`
     )
 
     return html
@@ -154,6 +359,13 @@ function generateLabelPageHtml(label: string, encodedLabel: string): string {
     html = html.replace(
         /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
         `<meta name="twitter:description" content="${escapeHtml(description)}" />`
+    )
+
+    // Replace JSON-LD schema with CollectionPage schema
+    const labelSchema = generateLabelSchema(label, encodedLabel)
+    html = html.replace(
+        /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+        `<script type="application/ld+json">\n${labelSchema}\n        </script>`
     )
 
     return html
