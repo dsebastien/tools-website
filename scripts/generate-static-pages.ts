@@ -253,6 +253,57 @@ function generateLabelSchema(label: string, encodedLabel: string): string {
 }
 
 /**
+ * Generate noscript content for a tool page
+ */
+function generateToolNoscript(tool: Tool): string {
+    return `
+    <noscript>
+        <article class="noscript-content" style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif;">
+            <h1>${escapeHtml(tool.name)}</h1>
+            <p><em>${escapeHtml(tool.description)}</em></p>
+            <p><strong>Category:</strong> ${escapeHtml(tool.category)}</p>
+            <p><strong>Labels:</strong> ${tool.labels.map((l) => `<a href="/label/${encodeURIComponent(l)}">${escapeHtml(l)}</a>`).join(', ')}</p>
+            <p><strong>Price:</strong> ${tool.free ? 'Free' : 'Paid'}</p>
+            ${tool.technologies.length > 0 ? `<p><strong>Technologies:</strong> ${tool.technologies.map(escapeHtml).join(', ')}</p>` : ''}
+            ${tool.license ? `<p><strong>License:</strong> ${escapeHtml(tool.license)}</p>` : ''}
+            <h2>Links</h2>
+            <ul>
+                <li><a href="${tool.url}" target="_blank" rel="noopener">Visit ${escapeHtml(tool.name)}</a></li>
+                ${tool.sourceCodeUrl ? `<li><a href="${tool.sourceCodeUrl}" target="_blank" rel="noopener">Source Code</a></li>` : ''}
+                ${tool.docsUrl ? `<li><a href="${tool.docsUrl}" target="_blank" rel="noopener">Documentation</a></li>` : ''}
+            </ul>
+            <p><a href="/">← Back to all tools</a></p>
+        </article>
+    </noscript>`
+}
+
+/**
+ * Generate noscript content for a label page
+ */
+function generateLabelNoscript(label: string): string {
+    const labeledTools = toolsData.tools.filter((t) => t.labels.includes(label))
+
+    return `
+    <noscript>
+        <article class="noscript-content" style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif;">
+            <h1>${escapeHtml(label)} - Tools</h1>
+            <p>Tools labeled with "${escapeHtml(label)}"</p>
+            <p><strong>Total tools:</strong> ${labeledTools.length}</p>
+            <h2>Tools</h2>
+            <ul>
+${labeledTools
+    .map(
+        (t) =>
+            `                <li><a href="/tool/${t.id}">${escapeHtml(t.name)}</a>${t.free ? ' (Free)' : ''} - ${escapeHtml(t.description)}</li>`
+    )
+    .join('\n')}
+            </ul>
+            <p><a href="/">← Back to all tools</a></p>
+        </article>
+    </noscript>`
+}
+
+/**
  * Generate customized HTML for a tool page with appropriate meta tags
  */
 function generateToolPageHtml(tool: Tool): string {
@@ -311,6 +362,10 @@ function generateToolPageHtml(tool: Tool): string {
         /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
         `<script type="application/ld+json">\n${toolSchema}\n        </script>`
     )
+
+    // Add noscript content before </body>
+    const noscriptContent = generateToolNoscript(tool)
+    html = html.replace('</body>', `${noscriptContent}\n    </body>`)
 
     return html
 }
@@ -374,6 +429,10 @@ function generateLabelPageHtml(label: string, encodedLabel: string): string {
         /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
         `<script type="application/ld+json">\n${labelSchema}\n        </script>`
     )
+
+    // Add noscript content before </body>
+    const noscriptContent = generateLabelNoscript(label)
+    html = html.replace('</body>', `${noscriptContent}\n    </body>`)
 
     return html
 }
