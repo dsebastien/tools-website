@@ -1,4 +1,12 @@
-## [0.0.1](https://github.com/dsebastien/tools-website/compare/2.2.0...0.0.1) (2025-12-29)
+## [2.6.0](https://github.com/dsebastien/tools-website/compare/2.5.0...2.6.0) (2025-12-29)
+## [2.5.0](https://github.com/dsebastien/tools-website/compare/2.4.0...2.5.0) (2025-12-29)
+## [2.4.0](https://github.com/dsebastien/tools-website/compare/2.3.0...2.4.0) (2025-12-29)
+## [2.3.0](https://github.com/dsebastien/tools-website/compare/2.2.0...2.3.0) (2025-12-29)
+
+### Features
+
+* **all:** added changelog page ([136205b](https://github.com/dsebastien/tools-website/commit/136205b09829e93f44f25f3888de14fc321d4646))
+* **all:** improved release process with changelog ([2e1ef09](https://github.com/dsebastien/tools-website/commit/2e1ef09000993782a47aa26aef6dfe81fc5df13c))
 ## [2.2.0](https://github.com/dsebastien/tools-website/compare/2.1.0...2.2.0) (2025-12-28)
 
 ### Features
