@@ -5,6 +5,7 @@ import './styles/index.css'
 
 import AppLayout from './components/layout/app-layout'
 import HomePage from './pages/home'
+import ChangelogPage from './pages/changelog'
 
 const rootElement = document.getElementById('root')
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(rootElement).render(
                     <Route path='/' element={<HomePage />} />
                     <Route path='/tool/:toolId' element={<HomePage />} />
                     <Route path='/label/:labelName' element={<HomePage />} />
+                    <Route path='/changelog' element={<ChangelogPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>

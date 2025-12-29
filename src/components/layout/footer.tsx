@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { FaHeart, FaTools } from 'react-icons/fa'
+import { FaHeart, FaTools, FaClipboardList } from 'react-icons/fa'
 import resourcesData from '@/data/resources.json'
 import socialsData from '@/data/socials.json'
 import ToolIcon from '@/components/tools/tool-icon'
@@ -42,6 +42,15 @@ const Footer: React.FC = () => {
                                     </a>
                                 </li>
                             ))}
+                            <li>
+                                <Link
+                                    to='/changelog'
+                                    className='text-primary/70 hover:text-secondary flex items-center gap-2 transition-colors'
+                                >
+                                    <FaClipboardList className='h-4 w-4' />
+                                    Changelog
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
