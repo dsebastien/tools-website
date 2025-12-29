@@ -1,3 +1,8 @@
+## [2.7.0](https://github.com/dsebastien/tools-website/compare/2.6.0...2.7.0) (2025-12-29)
+
+### Bug Fixes
+
+* **all:** fixed release scripts ([e537e95](https://github.com/dsebastien/tools-website/commit/e537e959ce26af0904d84418b2865eb7fdf73db5))
 ## [2.6.0](https://github.com/dsebastien/tools-website/compare/2.5.0...2.6.0) (2025-12-29)
 ## [2.5.0](https://github.com/dsebastien/tools-website/compare/2.4.0...2.5.0) (2025-12-29)
 ## [2.4.0](https://github.com/dsebastien/tools-website/compare/2.3.0...2.4.0) (2025-12-29)
