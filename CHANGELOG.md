@@ -1,3 +1,8 @@
+## [3.0.0](https://github.com/dsebastien/tools-website/compare/2.9.0...3.0.0) (2026-01-13)
+
+### Features
+
+* **all:** improved newsletter signup ([e69a33c](https://github.com/dsebastien/tools-website/commit/e69a33c7fbd1919ea8efb949ab722f1d4bf7cd8e))
 ## [2.9.0](https://github.com/dsebastien/tools-website/compare/2.7.0...2.9.0) (2026-01-13)
 
 ### Features
