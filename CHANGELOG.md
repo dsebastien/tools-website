@@ -1,3 +1,9 @@
+## [2.9.0](https://github.com/dsebastien/tools-website/compare/2.7.0...2.9.0) (2026-01-13)
+
+### Features
+
+* **all:** added newsletter subscription form ([27478e5](https://github.com/dsebastien/tools-website/commit/27478e536a8db8958c89796004dff21f951125be))
+* **all:** improve ui on large screens ([9fd2e01](https://github.com/dsebastien/tools-website/commit/9fd2e01d89348b8b2da3fa34ffe36c15d2b39337))
 ## [2.7.0](https://github.com/dsebastien/tools-website/compare/2.6.0...2.7.0) (2025-12-29)
 
 ### Bug Fixes
