@@ -7,6 +7,7 @@ import ToolCard from '@/components/tools/tool-card'
 import ToolsFilter from '@/components/tools/tools-filter'
 import ToolDetailModal from '@/components/tools/tool-detail-modal'
 import CommandPalette from '@/components/tools/command-palette'
+import CompactNewsletter from '@/components/ui/compact-newsletter'
 import toolsData from '@/data/tools.json'
 import type { Tool, ToolStatus, ToolsData } from '@/types/tool'
 
@@ -317,6 +318,13 @@ const HomePage: React.FC = () => {
                             to quickly search and navigate
                         </span>
                     </div>
+
+                    {/* Compact Newsletter - Only show on main page */}
+                    {!decodedLabelName && (
+                        <div className='mt-8 w-full'>
+                            <CompactNewsletter />
+                        </div>
+                    )}
                 </div>
             </Section>
 
