@@ -1,3 +1,8 @@
+## [3.1.0](https://github.com/dsebastien/tools-website/compare/3.0.0...3.1.0) (2026-01-14)
+
+### Features
+
+* **all:** improved newsletter handling ([59d9ca4](https://github.com/dsebastien/tools-website/commit/59d9ca461edf53e3ebdab71891b4ebefc334e150))
 ## [3.0.0](https://github.com/dsebastien/tools-website/compare/2.9.0...3.0.0) (2026-01-13)
 
 ### Features
