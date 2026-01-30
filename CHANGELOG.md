@@ -1,3 +1,9 @@
+## [3.5.0](https://github.com/dsebastien/tools-website/compare/3.4.0...3.5.0) (2026-01-30)
+
+### Features
+
+* **all:** migrated to Bun etc ([9e917fc](https://github.com/dsebastien/tools-website/commit/9e917fc3d5601bf94bfa3a7e86d88e8cc8433ea1))
+* **all:** updated ([a97e59b](https://github.com/dsebastien/tools-website/commit/a97e59bb0c6625b499fd3188abae2be172ad61b8))
 ## [3.4.0](https://github.com/dsebastien/tools-website/compare/3.3.0...3.4.0) (2026-01-30)
 
 ### Features
