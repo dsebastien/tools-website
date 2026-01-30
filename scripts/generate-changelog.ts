@@ -9,7 +9,7 @@ import { existsSync, readFileSync } from 'fs'
 export function generateChangelog(): string {
     // Generate changelog and capture output
     const result = execSync(
-        'npx conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0',
+        'bunx --bun conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0',
         { encoding: 'utf-8' }
     )
     return result

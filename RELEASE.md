@@ -4,16 +4,16 @@ This document describes how to create releases for the tools-website project.
 
 ## Overview
 
-The release process has been updated to ensure that `package.json` and `package-lock.json` versions are correctly updated **before** creating tags, and that the changelog is generated automatically.
+The release process has been updated to ensure that `package.json` and `bun.lock` versions are correctly updated **before** creating tags, and that the changelog is generated automatically.
 
 ## Two Ways to Create a Release
 
 ### 1. Local Release (Recommended)
 
-Use the `npm run release` command to create a release from your local machine:
+Use the `bun run release` command to create a release from your local machine:
 
 ```bash
-npm run release
+bun run release
 ```
 
 This script will:
@@ -22,7 +22,7 @@ This script will:
 2. Warn if you're not on the `main` branch
 3. Prompt you for a tag name (e.g., `1.0.0` or `v1.0.0`)
 4. Update `package.json` with the new version
-5. Update `package-lock.json` by running `npm install --package-lock-only`
+5. Update `bun.lock` by running `bun install`
 6. Generate/update `CHANGELOG.md` from conventional commits
 7. Show you a diff of the changes
 8. Ask for confirmation before committing
@@ -34,12 +34,12 @@ This script will:
 **Example:**
 
 ```bash
-$ npm run release
+$ bun run release
 Enter tag name (e.g., 1.0.0 or v1.0.0): 2.8.0
 Creating release: 2.8.0
 Updating package.json version...
 Updated package.json version to 2.8.0
-Updating package-lock.json...
+Updating bun.lock...
 Generating changelog...
 Changes to be committed:
 [... diff output ...]
@@ -64,7 +64,7 @@ You can also create releases through the GitHub Actions UI:
 
 This will:
 
-1. Update `package.json` and `package-lock.json`
+1. Update `package.json` and `bun.lock`
 2. Generate changelog
 3. Commit changes to main
 4. Create and push the tag
@@ -101,7 +101,7 @@ Breaking changes can be indicated with `BREAKING CHANGE:` in the commit footer.
 When you run a release, these files are modified and committed:
 
 1. **package.json** - `version` field updated
-2. **package-lock.json** - `version` field and `packages[""].version` updated
+2. **bun.lock** - Lock file updated
 3. **CHANGELOG.md** - New version entry added at the top
 
 The git tag is created on the commit that includes these changes, ensuring the tag always points to the correct version.
@@ -128,23 +128,23 @@ The tag you're trying to create already exists. Choose a different version numbe
 git tag -l  # List all tags
 ```
 
-### Version not updated in package-lock.json
+### Version not updated in bun.lock
 
 This should not happen with the new release process, but if it does:
 
 ```bash
-npm install --package-lock-only
+bun install
 ```
 
 ### Release workflow updates version after tag
 
-If you pushed a tag manually (not using `npm run release`), the workflow may try to update the version again. **Always use `npm run release`** for local releases to avoid this issue.
+If you pushed a tag manually (not using `bun run release`), the workflow may try to update the version again. **Always use `bun run release`** for local releases to avoid this issue.
 
 ## Migration Notes
 
 ### Old Release Process (Before Fix)
 
-The old `npm run release` command simply created and pushed a tag without updating versions:
+The old `bun run release` command simply created and pushed a tag without updating versions:
 
 ```bash
 # OLD - Don't use this anymore
@@ -153,7 +153,7 @@ read -p 'Enter tag name: ' TAG && git tag "$TAG" && git push origin "$TAG"
 
 This caused issues because:
 
-- `package.json` and `package-lock.json` were not updated
+- `package.json` and `bun.lock` were not updated
 - The tag pointed to a commit with the old version
 - The workflow tried to update versions after the tag, creating confusion
 
@@ -163,7 +163,7 @@ The new process ensures everything is updated before tagging:
 
 ```bash
 # NEW - Correct process
-npm run release
+bun run release
 ```
 
 This runs the `scripts/release.sh` script which handles all version updates before creating the tag.
@@ -187,15 +187,15 @@ This runs the `scripts/release.sh` script which handles all version updates befo
 
 ## Best Practices
 
-1. **Always commit your changes** before running `npm run release`
+1. **Always commit your changes** before running `bun run release`
 2. **Use semantic versioning** (MAJOR.MINOR.PATCH)
 3. **Use conventional commits** for automatic changelog generation
 4. **Review the diff** before confirming the release commit
-5. **Test locally** before releasing (`npm run build`)
-6. **Don't manually edit** `package-lock.json` - let npm update it
+5. **Test locally** before releasing (`bun run build`)
+6. **Don't manually edit** `bun.lock` - let bun update it
 
 ## Related Scripts
 
-- `npm run release:update-version <version>` - Update package.json only
-- `npm run release:changelog` - Generate/update CHANGELOG.md only
-- `npm run release` - Full release process (recommended)
+- `bun run release:update-version <version>` - Update package.json only
+- `bun run release:changelog` - Generate/update CHANGELOG.md only
+- `bun run release` - Full release process (recommended)

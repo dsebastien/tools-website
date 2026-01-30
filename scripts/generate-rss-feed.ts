@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env bun
 /**
  * Generates an RSS feed (feed.xml) for the tools website.
  * Includes all tools sorted alphabetically.

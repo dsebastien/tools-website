@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env bun
 /**
  * Generates a sitemap.xml for the tools website.
  * Includes the homepage, all tool detail pages, and all label pages.
