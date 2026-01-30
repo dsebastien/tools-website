@@ -39,12 +39,29 @@ if [ "$CURRENT_BRANCH" != "main" ]; then
     fi
 fi
 
-# Prompt for tag name
-read -p "Enter tag name (e.g., 1.0.0 or v1.0.0): " TAG
+# Calculate suggested next version based on conventional commits
+print_info "Analyzing commits to determine next version..."
+SUGGESTED_VERSION=$(npx tsx scripts/calculate-next-version.ts 2>/dev/null)
 
+if [ -z "$SUGGESTED_VERSION" ]; then
+    print_warning "Could not determine suggested version from commits"
+    SUGGESTED_VERSION="0.0.1"
+fi
+
+# Show commit analysis
+echo ""
+print_info "Version analysis:"
+npx tsx scripts/calculate-next-version.ts --verbose 2>/dev/null | while IFS= read -r line; do
+    echo "  $line"
+done
+
+# Prompt for tag name with suggested version
+echo ""
+read -p "Enter tag name [$SUGGESTED_VERSION]: " TAG
+
+# Use suggested version if user pressed Enter
 if [ -z "$TAG" ]; then
-    print_error "Error: Tag name cannot be empty"
-    exit 1
+    TAG="$SUGGESTED_VERSION"
 fi
 
 # Check if tag already exists
