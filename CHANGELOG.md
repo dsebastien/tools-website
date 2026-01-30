@@ -1,3 +1,9 @@
+## [3.2.0](https://github.com/dsebastien/tools-website/compare/3.1.0...3.2.0) (2026-01-30)
+
+### Features
+
+* **all:** added tools ([4906983](https://github.com/dsebastien/tools-website/commit/4906983f2e41badbd97e957298300e303a96ccc5))
+* **all:** improved release script ([2a56c75](https://github.com/dsebastien/tools-website/commit/2a56c759d6fef1e23ca9a2b01bea8f14b8d61576))
 ## [3.1.0](https://github.com/dsebastien/tools-website/compare/3.0.0...3.1.0) (2026-01-14)
 
 ### Features
