@@ -1,3 +1,9 @@
+## [3.3.0](https://github.com/dsebastien/tools-website/compare/3.2.0...3.3.0) (2026-01-30)
+
+### Features
+
+* **all:** added fuzzy search ([613143b](https://github.com/dsebastien/tools-website/commit/613143bd2c49d17745133a7166d5a7a5a73ebf8e))
+* **all:** added validate script ([fd0d17e](https://github.com/dsebastien/tools-website/commit/fd0d17ef9333408ee1ebc837cef4d91a1d973aa3))
 ## [3.2.0](https://github.com/dsebastien/tools-website/compare/3.1.0...3.2.0) (2026-01-30)
 
 ### Features
