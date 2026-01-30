@@ -1,3 +1,8 @@
+## [3.4.0](https://github.com/dsebastien/tools-website/compare/3.3.0...3.4.0) (2026-01-30)
+
+### Features
+
+* **all:** added rss feed ([4a8ab7d](https://github.com/dsebastien/tools-website/commit/4a8ab7dc4c274987fd19f4ed20123ad1699fd73f))
 ## [3.3.0](https://github.com/dsebastien/tools-website/compare/3.2.0...3.3.0) (2026-01-30)
 
 ### Features
