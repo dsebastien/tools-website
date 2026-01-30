@@ -553,6 +553,37 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-expander",
+            "name": "Obsidian Expander",
+            "description": "Obsidian plugin for automatic variable substitution across your vault. Define key-value pairs and use HTML comment markers to trigger dynamic text replacements.",
+            "labels": ["obsidian", "plugin", "automation", "variables", "text-expansion"],
+            "category": "Obsidian",
+            "url": "https://developassion.gitbook.io/obsidian-expander/",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-expander",
+            "docsUrl": "https://developassion.gitbook.io/obsidian-expander/",
+            "technologies": ["TypeScript", "Obsidian"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
+            "id": "obsidian-note-village",
+            "name": "Obsidian Note Village",
+            "description": "An AI-powered game within Obsidian where your notes become villagers you can chat with. Areas are based on your most-used tags, creating a mind palace to explore and converse with your past selves.",
+            "labels": ["obsidian", "plugin", "ai", "game", "claude", "mind-palace"],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-note-village",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-note-village",
+            "technologies": ["TypeScript", "Obsidian", "AI"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "knowii-community",
             "name": "Knowii Complete Knowledge System",
             "description": "The central hub integrating community, customers, content, courses, products and services. For leaders, knowledge workers, solopreneurs, and content creators who want to break free from information overload.",
@@ -592,6 +623,19 @@
             "featured": false,
             "status": "active",
             "icon": "https://www.dsebastien.net/assets/images/developassion-logo.png?v=227ae60558"
+        },
+        {
+            "id": "dsebastien-store",
+            "name": "Knowledge Forge Store",
+            "description": "Online store offering courses, systems, and tools for knowledge workers and creators. The central hub for all educational products and resources.",
+            "labels": ["store", "courses", "products", "knowledge-management"],
+            "category": "Platforms",
+            "url": "https://store.dsebastien.net",
+            "free": false,
+            "technologies": ["Gumroad"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaStore"
         },
         {
             "id": "dsebastien-youtube",
