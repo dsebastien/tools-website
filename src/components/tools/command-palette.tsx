@@ -9,6 +9,7 @@ import {
     FaKeyboard
 } from 'react-icons/fa'
 import { cn } from '@/lib/utils'
+import { fuzzySearch, type FuzzySearchConfig } from '@/lib/fuzzy-search'
 import ToolIcon from '@/components/tools/tool-icon'
 import type { Tool } from '@/types/tool'
 
@@ -32,6 +33,41 @@ interface Command {
     icon: React.ReactNode
     action: () => void
     tool?: Tool
+}
+
+/**
+ * Field names that can be searched in a command
+ */
+type CommandSearchField = 'title' | 'subtitle' | 'labels' | 'technologies'
+
+/**
+ * Search config for commands - weighted by importance
+ */
+const COMMAND_SEARCH_CONFIG: FuzzySearchConfig<CommandSearchField> = {
+    fields: {
+        title: { weight: 5 },
+        subtitle: { weight: 3 },
+        labels: { weight: 2 },
+        technologies: { weight: 2 }
+    }
+}
+
+/**
+ * Get field value from a command for search
+ */
+function getCommandFieldValue(cmd: Command, field: CommandSearchField): string | string[] | null {
+    switch (field) {
+        case 'title':
+            return cmd.title
+        case 'subtitle':
+            return cmd.subtitle ?? null
+        case 'labels':
+            return cmd.tool?.labels ?? null
+        case 'technologies':
+            return cmd.tool?.technologies ?? null
+        default:
+            return null
+    }
 }
 
 const CommandPalette: React.FC<CommandPaletteProps> = ({
@@ -111,22 +147,13 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({
         return cmds
     }, [tools, categories, onSetViewMode, onSetCategory, onClose])
 
-    // Filter commands based on query
+    // Filter commands based on query using fuzzy search
     const filteredCommands = useMemo(() => {
         if (!query.trim()) {
             return commands
         }
 
-        const lowerQuery = query.toLowerCase()
-        return commands.filter((cmd) => {
-            const titleMatch = cmd.title.toLowerCase().includes(lowerQuery)
-            const subtitleMatch = cmd.subtitle?.toLowerCase().includes(lowerQuery)
-            const toolLabels = cmd.tool?.labels.some((l) => l.toLowerCase().includes(lowerQuery))
-            const toolTech = cmd.tool?.technologies.some((t) =>
-                t.toLowerCase().includes(lowerQuery)
-            )
-            return titleMatch || subtitleMatch || toolLabels || toolTech
-        })
+        return fuzzySearch(commands, query, COMMAND_SEARCH_CONFIG, getCommandFieldValue)
     }, [commands, query])
 
     // Reset selection when filtered results change

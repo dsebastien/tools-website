@@ -9,6 +9,7 @@ import ToolDetailModal from '@/components/tools/tool-detail-modal'
 import CommandPalette from '@/components/tools/command-palette'
 import CompactNewsletter from '@/components/ui/compact-newsletter'
 import toolsData from '@/data/tools.json'
+import { searchTools } from '@/lib/tool-search'
 import type { Tool, ToolStatus, ToolsData } from '@/types/tool'
 
 const typedToolsData = toolsData as ToolsData
@@ -136,18 +137,13 @@ const HomePage: React.FC = () => {
 
     // Filter tools
     const filteredTools = useMemo(() => {
-        return typedToolsData.tools.filter((tool) => {
-            // Search query
-            if (searchQuery) {
-                const query = searchQuery.toLowerCase()
-                const matchesSearch =
-                    tool.name.toLowerCase().includes(query) ||
-                    tool.description.toLowerCase().includes(query) ||
-                    tool.labels.some((l) => l.toLowerCase().includes(query)) ||
-                    tool.technologies.some((t) => t.toLowerCase().includes(query))
-                if (!matchesSearch) return false
-            }
+        // Start with fuzzy search if query exists
+        let result = searchQuery
+            ? searchTools(typedToolsData.tools, searchQuery)
+            : typedToolsData.tools
 
+        // Apply additional filters
+        result = result.filter((tool) => {
             // Category filter
             if (selectedCategory !== 'All' && tool.category !== selectedCategory) {
                 return false
@@ -178,6 +174,8 @@ const HomePage: React.FC = () => {
 
             return true
         })
+
+        return result
     }, [
         searchQuery,
         selectedCategory,
@@ -187,14 +185,19 @@ const HomePage: React.FC = () => {
         showFreeOnly
     ])
 
-    // Sort: featured first, then by name
+    // Sort: when searching, keep relevance order; otherwise featured first, then by name
     const sortedTools = useMemo(() => {
+        // If there's a search query, fuzzy search already sorted by relevance
+        if (searchQuery) {
+            return filteredTools
+        }
+        // Otherwise, sort by featured first, then by name
         return [...filteredTools].sort((a, b) => {
             if (a.featured && !b.featured) return -1
             if (!a.featured && b.featured) return 1
             return a.name.localeCompare(b.name)
         })
-    }, [filteredTools])
+    }, [filteredTools, searchQuery])
 
     // Handle keyboard shortcut for command palette
     useEffect(() => {
