@@ -15,8 +15,54 @@ permissions:
     contents: write
 
 jobs:
+    pre-release-checks:
+        name: Pre-Release Checks
+        if: github.event_name == 'workflow_dispatch'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run ESLint
+              run: npm run lint
+
+            - name: Check formatting
+              run: npx prettier --check .
+
+            - name: TypeScript type checking
+              run: npm run tsc
+
+            - name: Run tests
+              run: npm run test
+
+            - name: Build project
+              run: npm run build
+
+            - name: Summary
+              run: |
+                  echo "## Pre-Release Checks Passed ✓" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "- ✓ ESLint" >> $GITHUB_STEP_SUMMARY
+                  echo "- ✓ Prettier formatting" >> $GITHUB_STEP_SUMMARY
+                  echo "- ✓ TypeScript type checking" >> $GITHUB_STEP_SUMMARY
+                  echo "- ✓ Tests" >> $GITHUB_STEP_SUMMARY
+                  echo "- ✓ Build" >> $GITHUB_STEP_SUMMARY
+
     release:
         name: Create Tag and Release
+        needs: [pre-release-checks]
+        if: always() && (github.event_name == 'push' || needs.pre-release-checks.result == 'success')
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
