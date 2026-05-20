@@ -1,3 +1,10 @@
+## [3.6.0](https://github.com/dsebastien/tools-website/compare/3.5.0...3.6.0) (2026-05-20)
+
+### Features
+
+* **all:** added more tools ([527465d](https://github.com/dsebastien/tools-website/commit/527465d1c7945ccf028ed3f77d971aca71340633))
+* **all:** updated scripts ([73f88e9](https://github.com/dsebastien/tools-website/commit/73f88e9c89f13c418c88b2252a83243256afe8f3))
+* **all:** updated workflows ([a631fdf](https://github.com/dsebastien/tools-website/commit/a631fdf949386f53d5cc904aa88ce83b85f80f35))
 ## [3.5.0](https://github.com/dsebastien/tools-website/compare/3.4.0...3.5.0) (2026-01-30)
 
 ### Features
