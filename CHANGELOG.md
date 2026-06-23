@@ -1,3 +1,8 @@
+## [3.7.0](https://github.com/dsebastien/tools-website/compare/3.6.0...3.7.0) (2026-06-23)
+
+### Features
+
+* **all:** added ADMX viewer ([43e19b2](https://github.com/dsebastien/tools-website/commit/43e19b2a0ae80457f85b036ef512a099d8e672bc))
 ## [3.6.0](https://github.com/dsebastien/tools-website/compare/3.5.0...3.6.0) (2026-05-20)
 
 ### Features
