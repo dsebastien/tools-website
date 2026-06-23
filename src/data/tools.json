@@ -414,6 +414,22 @@
             "icon": "FaGhost"
         },
         {
+            "id": "admx-viewer",
+            "name": "ADMX Viewer",
+            "description": "A web app for browsing local ADMX and ADML files, searching across Group Policy settings, editing values, and exporting enforceable policy payloads (.reg, PowerShell, Intune XML, JSON).",
+            "labels": ["admx", "group-policy", "windows", "utility"],
+            "category": "Utilities",
+            "url": "https://github.com/dsebastien/admx-viewer",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/admx-viewer",
+            "docsUrl": "https://dsebastien.github.io/admx-viewer/",
+            "technologies": ["Bun", "React", "TypeScript"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaWrench"
+        },
+        {
             "id": "obsidian-starter-kit",
             "name": "Obsidian Starter Kit",
             "description": "The most comprehensive Obsidian starter kit. A complete system for personal knowledge management, journaling, and productivity in Obsidian.",
