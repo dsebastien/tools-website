@@ -744,6 +744,38 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-agentic-resource-discovery-server",
+            "name": "Agentic Resource Discovery Server",
+            "description": "Obsidian plugin that turns your vault into a local-first AI Skills registry, with a localhost REST and MCP server so agents can search and fetch exactly the skill they need without it ever leaving your machine.",
+            "labels": ["obsidian", "plugin", "ai", "mcp", "ai-skills", "local-first"],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-agentic-resource-discovery-server",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-agentic-resource-discovery-server",
+            "docsUrl": "https://dsebastien.github.io/obsidian-agentic-resource-discovery-server/",
+            "technologies": ["TypeScript", "Obsidian", "MCP"],
+            "featured": false,
+            "status": "beta",
+            "icon": "SiObsidian"
+        },
+        {
+            "id": "obsidian-kanban-action-planner",
+            "name": "Kanban Action Planner",
+            "description": "Obsidian plugin that adds Kanban board and calendar views to Bases, driven by your note properties. Drag cards to update statuses, dates, and relationships, all written straight back to your frontmatter.",
+            "labels": ["obsidian", "plugin", "bases", "kanban", "task-management", "planning"],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-kanban-action-planner",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-kanban-action-planner",
+            "docsUrl": "https://dsebastien.github.io/obsidian-kanban-action-planner/",
+            "technologies": ["TypeScript", "Obsidian"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "knowii-community",
             "name": "Knowii Complete Knowledge System",
             "description": "The central hub integrating community, customers, content, courses, products and services. For leaders, knowledge workers, solopreneurs, and content creators who want to break free from information overload.",
