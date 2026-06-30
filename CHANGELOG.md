@@ -1,3 +1,8 @@
+## [3.8.0](https://github.com/dsebastien/tools-website/compare/3.7.0...3.8.0) (2026-06-30)
+
+### Features
+
+* **all:** added tools ([ad4c8c8](https://github.com/dsebastien/tools-website/commit/ad4c8c8c2f8a9f91cb5658ec981ef76fbebca7a8))
 ## [3.7.0](https://github.com/dsebastien/tools-website/compare/3.6.0...3.7.0) (2026-06-23)
 
 ### Features
