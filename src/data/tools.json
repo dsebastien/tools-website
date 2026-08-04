@@ -776,6 +776,22 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-ai-editor",
+            "name": "AI Editor",
+            "description": "Obsidian plugin bringing AI editing and reviewing into the editor itself. Define AI personas that highlight what they care about in your text and propose inline edits you accept or reject.",
+            "labels": ["obsidian", "plugin", "ai", "writing", "editing", "review"],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-ai-editor",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-ai-editor",
+            "docsUrl": "https://dsebastien.github.io/obsidian-ai-editor/",
+            "technologies": ["TypeScript", "Obsidian"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "knowii-community",
             "name": "Knowii Complete Knowledge System",
             "description": "The central hub integrating community, customers, content, courses, products and services. For leaders, knowledge workers, solopreneurs, and content creators who want to break free from information overload.",
