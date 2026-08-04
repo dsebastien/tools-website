@@ -1,3 +1,9 @@
+## [3.9.0](https://github.com/dsebastien/tools-website/compare/3.8.0...3.9.0) (2026-08-04)
+
+### Features
+
+* **all:** added ai editor plugin ([70bbe13](https://github.com/dsebastien/tools-website/commit/70bbe13e314f5deca67737f3960d332f0390aa07))
+* **all:** added plan de tables mariage ([775015e](https://github.com/dsebastien/tools-website/commit/775015ef3739a21412f0cc25254fba51c467f894))
 ## [3.8.0](https://github.com/dsebastien/tools-website/compare/3.7.0...3.8.0) (2026-06-30)
 
 ### Features
