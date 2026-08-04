@@ -16,6 +16,21 @@
             "icon": "FaCalendarAlt"
         },
         {
+            "id": "plan-de-tables-mariage",
+            "name": "Plan de Tables Mariage",
+            "description": "A single-file seating planner for weddings and banquets. Couples move as one block, several table layouts can be compared side by side, and nothing ever leaves your browser.",
+            "labels": ["planning", "organization", "local-first", "free"],
+            "category": "Productivity",
+            "url": "https://dsebastien.github.io/plan-de-tables-mariage/",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/plan-de-tables-mariage",
+            "technologies": ["JavaScript", "TailwindCSS"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaUsers"
+        },
+        {
             "id": "knowii-voice-ai",
             "name": "Knowii Voice AI",
             "description": "Voice-to-text that respects your privacy. Press, speak, release. Your words appear exactly where you need them. Works everywhere, runs on your computer.",
