@@ -369,6 +369,22 @@
             "icon": "FaCode"
         },
         {
+            "id": "discord-sync-cli",
+            "name": "Discord Sync CLI",
+            "description": "A CLI/TUI for exporting/synchronizing Discord servers/channels/threads to JSON, HTML & Markdown. Incremental syncs, asset preservation, and readable offline archives.",
+            "labels": ["discord", "cli", "tui", "export", "sync", "backup", "markdown"],
+            "category": "CLI Tools",
+            "url": "https://github.com/dsebastien/discord-sync-cli",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/discord-sync-cli",
+            "docsUrl": "https://dsebastien.github.io/discord-sync-cli/",
+            "technologies": ["TypeScript", "Bun", "Docker"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaDiscord"
+        },
+        {
             "id": "ghost-visibility-cli",
             "name": "Ghost Visibility CLI",
             "description": "A command-line tool to manage the visibility of posts in your Ghost blog. Bulk update post visibility with ease.",
