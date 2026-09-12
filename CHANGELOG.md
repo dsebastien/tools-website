@@ -1,3 +1,8 @@
+## [3.11.0](https://github.com/dsebastien/tools-website/compare/3.10.1...3.11.0) (2026-09-12)
+
+### Features
+
+* **tools:** add the free Complete Guide to Obsidian Automation ([09c534a](https://github.com/dsebastien/tools-website/commit/09c534aed8639c7d09bb700b01c5b4becce14162))
 ## [3.10.1](https://github.com/dsebastien/tools-website/compare/3.10.0...3.10.1) (2026-08-28)
 ## [3.10.0](https://github.com/dsebastien/tools-website/compare/3.9.0...3.10.0) (2026-08-26)
 
