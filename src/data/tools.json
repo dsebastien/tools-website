@@ -235,6 +235,19 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-automation-guide",
+            "name": "Free Complete Guide to Obsidian Automation",
+            "description": "A free 62-page guide to Obsidian automation: the three layers (inside the app, around the vault, AI agents on top), every plugin and technique that matters, and how to adopt them in the right order.",
+            "labels": ["free", "obsidian", "guide", "automation", "ai"],
+            "category": "Free Resources",
+            "url": "https://www.dsebastien.net/free-complete-guide-to-obsidian-automation",
+            "free": true,
+            "technologies": ["Obsidian"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "dev-concepts",
             "name": "Dev Concepts",
             "description": "A 12-volume book series covering fundamental software development concepts. From basics to advanced topics.",
