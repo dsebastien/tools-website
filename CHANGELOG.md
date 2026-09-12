@@ -1,3 +1,8 @@
+## [3.12.0](https://github.com/dsebastien/tools-website/compare/3.11.0...3.12.0) (2026-09-12)
+
+### Features
+
+* **tools:** list the Concepts website under free resources ([e65dec2](https://github.com/dsebastien/tools-website/commit/e65dec2c3c03147763e91b4591ef23b4c391cb37))
 ## [3.11.0](https://github.com/dsebastien/tools-website/compare/3.10.1...3.11.0) (2026-09-12)
 
 ### Features
