@@ -209,6 +209,21 @@
             "icon": "FaBoxOpen"
         },
         {
+            "id": "concepts",
+            "name": "Concepts",
+            "description": "A curated collection of 4,000+ concepts, mental models, frameworks, methods and principles for knowledge management and personal development, each with a short explanation and links to go deeper.",
+            "labels": ["free", "concepts", "mental-models", "pkm", "knowledge-management"],
+            "category": "Free Resources",
+            "url": "https://concepts.dsebastien.net",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/concept-cards",
+            "technologies": [],
+            "featured": false,
+            "status": "active",
+            "icon": "FaBrain"
+        },
+        {
             "id": "knowledge-system-checklist",
             "name": "Free Knowledge System Checklist",
             "description": "A clear roadmap to building your own Knowledge System. Evaluate and improve your personal knowledge management system.",
