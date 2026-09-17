@@ -1,3 +1,8 @@
+## [3.13.1](https://github.com/dsebastien/tools-website/compare/3.13.0...3.13.1) (2026-09-17)
+
+### Bug Fixes
+
+* **tools:** point GitHub Radar at ghradar.dsebastien.net ([7f6e475](https://github.com/dsebastien/tools-website/commit/7f6e475be91a3798e93b21684a3870862f0edd46))
 ## [3.13.0](https://github.com/dsebastien/tools-website/compare/3.12.0...3.13.0) (2026-09-17)
 
 ### Features
