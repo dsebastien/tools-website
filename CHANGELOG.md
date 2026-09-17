@@ -1,3 +1,8 @@
+## [3.13.0](https://github.com/dsebastien/tools-website/compare/3.12.0...3.13.0) (2026-09-17)
+
+### Features
+
+* **tools:** list GitHub Radar under utilities ([747abbc](https://github.com/dsebastien/tools-website/commit/747abbc282a488130e07084213de30b59586e8a8))
 ## [3.12.0](https://github.com/dsebastien/tools-website/compare/3.11.0...3.12.0) (2026-09-12)
 
 ### Features
