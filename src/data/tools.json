@@ -473,6 +473,21 @@
             "icon": "FaGhost"
         },
         {
+            "id": "github-radar",
+            "name": "GitHub Radar",
+            "description": "A dashboard listing every open issue and pull request across the GitHub users, organizations and repositories you care about, with filters, grouping, attention flags and quick actions. Runs entirely in the browser with your own token.",
+            "labels": ["free", "github", "issues", "pull-requests", "dashboard", "open-source"],
+            "category": "Utilities",
+            "url": "https://dsebastien.github.io/github-radar/",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/github-radar",
+            "technologies": ["React", "TypeScript", "Tailwind CSS", "Vite"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaGithub"
+        },
+        {
             "id": "admx-viewer",
             "name": "ADMX Viewer",
             "description": "A web app for browsing local ADMX and ADML files, searching across Group Policy settings, editing values, and exporting enforceable policy payloads (.reg, PowerShell, Intune XML, JSON).",
