@@ -478,7 +478,7 @@
             "description": "A dashboard listing every open issue and pull request across the GitHub users, organizations and repositories you care about, with filters, grouping, attention flags and quick actions. Runs entirely in the browser with your own token.",
             "labels": ["free", "github", "issues", "pull-requests", "dashboard", "open-source"],
             "category": "Utilities",
-            "url": "https://dsebastien.github.io/github-radar/",
+            "url": "https://ghradar.dsebastien.net",
             "free": true,
             "license": "MIT",
             "sourceCodeUrl": "https://github.com/dsebastien/github-radar",
