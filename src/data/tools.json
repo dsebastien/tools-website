@@ -866,6 +866,31 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "music-notation",
+            "name": "Music Notation",
+            "description": "Open-source library that turns small text blocks into guitar chord diagrams, piano keyboards, fretboards and ChordPro chord charts, drawn as SVG. Works in Obsidian, on Obsidian Publish and on any web page.",
+            "labels": [
+                "music",
+                "library",
+                "npm",
+                "guitar",
+                "piano",
+                "chords",
+                "obsidian",
+                "publish"
+            ],
+            "category": "Open Source",
+            "url": "https://github.com/dsebastien/music-notation",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/music-notation",
+            "docsUrl": "https://dsebastien.github.io/music-notation/",
+            "technologies": ["TypeScript"],
+            "featured": false,
+            "status": "active",
+            "icon": "FaCode"
+        },
+        {
             "id": "obsidian-ai-editor",
             "name": "AI Editor",
             "description": "Obsidian plugin bringing AI editing and reviewing into the editor itself. Define AI personas that highlight what they care about in your text and propose inline edits you accept or reject.",
