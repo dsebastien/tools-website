@@ -1,3 +1,8 @@
+## [3.14.0](https://github.com/dsebastien/tools-website/compare/3.13.1...3.14.0) (2026-10-28)
+
+### Features
+
+* **tools:** add the Music Practice plugin ([a23ab2a](https://github.com/dsebastien/tools-website/commit/a23ab2af698a1cb12f98849097e3213c09473a44))
 ## [3.13.1](https://github.com/dsebastien/tools-website/compare/3.13.0...3.13.1) (2026-09-17)
 
 ### Bug Fixes
