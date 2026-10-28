@@ -1,3 +1,8 @@
+## [3.15.0](https://github.com/dsebastien/tools-website/compare/3.14.0...3.15.0) (2026-10-28)
+
+### Features
+
+* **tools:** add the Music Notation library ([363289d](https://github.com/dsebastien/tools-website/commit/363289d55ea00c3961780c8f34436fd4a2cf96ea))
 ## [3.14.0](https://github.com/dsebastien/tools-website/compare/3.13.1...3.14.0) (2026-10-28)
 
 ### Features
