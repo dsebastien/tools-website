@@ -850,6 +850,22 @@
             "icon": "SiObsidian"
         },
         {
+            "id": "obsidian-music-practice",
+            "name": "Music Practice",
+            "description": "Obsidian plugin for learning an instrument in your notes. Log practice with a timer, plan sessions for the time you have, track mastery and catch what is slipping with spaced review, for guitar, piano and any instrument.",
+            "labels": ["obsidian", "plugin", "music", "learning", "practice", "guitar", "piano"],
+            "category": "Obsidian",
+            "url": "https://github.com/dsebastien/obsidian-music-practice",
+            "free": true,
+            "license": "MIT",
+            "sourceCodeUrl": "https://github.com/dsebastien/obsidian-music-practice",
+            "docsUrl": "https://dsebastien.github.io/obsidian-music-practice/",
+            "technologies": ["TypeScript", "Obsidian"],
+            "featured": false,
+            "status": "active",
+            "icon": "SiObsidian"
+        },
+        {
             "id": "obsidian-ai-editor",
             "name": "AI Editor",
             "description": "Obsidian plugin bringing AI editing and reviewing into the editor itself. Define AI personas that highlight what they care about in your text and propose inline edits you accept or reject.",
